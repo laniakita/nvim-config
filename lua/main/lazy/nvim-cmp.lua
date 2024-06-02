@@ -101,6 +101,18 @@ return {
           Lua = {}
         }
       }
+
+      nvim_lsp['html'].setup {
+        capabilities = capabilities
+      }
+
+      nvim_lsp['tailwindcss'].setup {
+        capabilities = capabilities
+      }
+
+      nvim_lsp['biome'].setup {
+        capabilities = capabilities
+      }
     end
   },
 }
