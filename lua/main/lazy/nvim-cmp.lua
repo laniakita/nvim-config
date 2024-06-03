@@ -92,6 +92,7 @@ return {
         capabilities = capabilities
       }
 
+      -- requires: $ brew install / # pacman -S lua-language-server
       nvim_lsp['lua_ls'].setup {
         capabilities = capabilities,
         on_init = function(client)
@@ -137,13 +138,13 @@ return {
         capabilities = capabilities
       }
 
-      -- requires npm install -g typescript typescript-language-server
+      -- requires: npm install -g typescript typescript-language-server
       -- tsserver is setup per project.
       -- see: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#tsserver
+
       nvim_lsp['zls'].setup {
         capabilities = capabilities
       }
-
     end
   },
 }
