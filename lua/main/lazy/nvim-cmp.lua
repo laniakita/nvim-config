@@ -106,6 +106,10 @@ return {
         capabilities = capabilities
       }
 
+      nvim_lsp['zls'].setup {
+        capabilities = capabilities
+      }
+
       nvim_lsp['html'].setup {
         capabilities = capabilities
       }
