@@ -102,6 +102,10 @@ return {
         }
       }
 
+      nvim_lsp['gopls'].setup {
+        capabilities = capabilities
+      }
+
       nvim_lsp['html'].setup {
         capabilities = capabilities
       }
