@@ -69,6 +69,29 @@ return {
 
       local nvim_lsp = require('lspconfig')
 
+      -- requires: npm install -g @biomejs/biome
+      nvim_lsp['biome'].setup {
+        capabilities = capabilities
+      }
+
+      -- requires: dotnet tool install --global csharp-ls
+      nvim_lsp['csharp_ls'].setup {
+        capabilities = capabilities
+      }
+
+      nvim_lsp['glsl_analyzer'].setup {
+        capabilities = capabilities
+      }
+
+      nvim_lsp['gopls'].setup {
+        capabilities = capabilities
+      }
+
+      -- requires: npm install -g vscode-langservers-extracted
+      nvim_lsp['html'].setup {
+        capabilities = capabilities
+      }
+
       nvim_lsp['lua_ls'].setup {
         capabilities = capabilities,
         on_init = function(client)
@@ -102,25 +125,25 @@ return {
         }
       }
 
-      nvim_lsp['gopls'].setup {
+      -- requires: npm install -g svelte-language-server
+      -- in addition: you'll need to configure tsserver + typescript-svelte-plugin.
+      -- see: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#svelte
+      nvim_lsp['svelte'].setup {
         capabilities = capabilities
       }
 
-      nvim_lsp['zls'].setup {
-        capabilities = capabilities
-      }
-
-      nvim_lsp['html'].setup {
-        capabilities = capabilities
-      }
-
+      -- requires: npm install -g @tailwindcss/language-server
       nvim_lsp['tailwindcss'].setup {
         capabilities = capabilities
       }
 
-      nvim_lsp['biome'].setup {
+      -- requires npm install -g typescript typescript-language-server
+      -- tsserver is setup per project.
+      -- see: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#tsserver
+      nvim_lsp['zls'].setup {
         capabilities = capabilities
       }
+
     end
   },
 }
