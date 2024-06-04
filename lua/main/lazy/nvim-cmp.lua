@@ -66,35 +66,57 @@ return {
         capabilities = capabilities
       }]]
       --
+      local attach = function(client, bufnr)
+        vim.api.nvim_create_autocmd("CursorHold", {
+          buffer = bufnr,
+          callback = function()
+            local opts = {
+              focusable = false,
+              close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+              border = 'rounded',
+              source = 'always',
+              prefix = ' ',
+              scope = 'cursor',
+            }
+            vim.diagnostic.open_float(nil, opts)
+          end
+        })
+      end
 
       local nvim_lsp = require('lspconfig')
 
       -- requires: npm install -g @biomejs/biome
       nvim_lsp['biome'].setup {
-        capabilities = capabilities
+        capabilities = capabilities,
+        on_attach = attach
       }
 
       -- requires: dotnet tool install --global csharp-ls
       nvim_lsp['csharp_ls'].setup {
-        capabilities = capabilities
+        capabilities = capabilities,
+        on_attach = attach
       }
 
       nvim_lsp['glsl_analyzer'].setup {
-        capabilities = capabilities
+        capabilities = capabilities,
+        on_attach = attach
       }
 
       nvim_lsp['gopls'].setup {
-        capabilities = capabilities
+        capabilities = capabilities,
+        on_attach = attach
       }
 
       -- requires: npm install -g vscode-langservers-extracted
       nvim_lsp['html'].setup {
-        capabilities = capabilities
+        capabilities = capabilities,
+        on_attach = attach
       }
 
       -- requires: $ brew install / # pacman -S lua-language-server
       nvim_lsp['lua_ls'].setup {
         capabilities = capabilities,
+        on_attach = attach,
         on_init = function(client)
           local path = client.workspace_folders[1].name
           if vim.loop.fs_stat(path .. '/.luarc.json') or vim.loop.fs_stat(path .. '/.luarc.jsonc') then
@@ -130,23 +152,27 @@ return {
       -- in addition: you'll need to configure tsserver + typescript-svelte-plugin.
       -- see: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#svelte
       nvim_lsp['svelte'].setup {
-        capabilities = capabilities
+        capabilities = capabilities,
+        on_attach = attach
       }
 
       -- requires: npm install -g @tailwindcss/language-server
       nvim_lsp['tailwindcss'].setup {
-        capabilities = capabilities
+        capabilities = capabilities,
+        on_attach = attach
       }
 
       -- requires: npm install -g typescript typescript-language-server
       -- tsserver is setup per project.
       -- see: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#tsserver
       nvim_lsp['tsserver'].setup {
-        capabilities = capabilities
+        capabilities = capabilities,
+        on_attach = attach
       }
 
       nvim_lsp['zls'].setup {
-        capabilities = capabilities
+        capabilities = capabilities,
+        on_attach = attach
       }
     end
   },
