@@ -18,3 +18,17 @@ vim.opt.updatetime = 50
 vim.opt.colorcolumn = "80"
 vim.opt.isfname.append = ("@-@")
 vim.opt.showbreak = string.rep(" ", 2)
+
+-- diagnostics
+vim.diagnostic.config({
+  virtual_text = true,
+  signs = true,
+  underline = true,
+  update_in_insert = true,
+  severity_sort = true,
+})
+local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = " " }
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
