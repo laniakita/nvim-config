@@ -97,6 +97,12 @@ return {
         on_attach = attach
       }
 
+      -- requires: npm i -g vscode-langservers-extracted
+      nvim_lsp['eslint'].setup {
+        capabilities = capabilities,
+        on_attach = attach
+      }
+
       nvim_lsp['glsl_analyzer'].setup {
         capabilities = capabilities,
         on_attach = attach
