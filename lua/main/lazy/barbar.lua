@@ -38,7 +38,5 @@ return {
       { "<A-10>",  "<cmd>BufferLast<cr>",         desc = "view last tab" },
     },
     lazy = false,
-    version = '^1.0.0', -- optional: only update when a new 1.x version is released
-
   },
 }
