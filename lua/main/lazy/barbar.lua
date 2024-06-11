@@ -5,21 +5,21 @@ return {
       'lewis6991/gitsigns.nvim',     -- OPTIONAL: for git status
       'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
     },
-    config = function()
-      vim.g.barbar_auto_setup = false
-      require("barbar").setup({
-        -- lazy.nvim will automatically call setup for you. put your options here, anything missing will use the default:
-        -- animation = true,
-        -- insert_at_start = true,
-        -- …etc.
-        sidebar_filetypes = {
-          undotree = {
-            text = 'undotree',
-            align = 'left',
-          },
+    init = function() vim.g.barbar_auto_setup = false end,
+    opts = {
+      -- lazy.nvim will automatically call setup for you. put your options here, anything missing will use the default:
+      -- animation = true,
+      -- insert_at_start = true,
+      -- …etc.
+      sidebar_filetypes = {
+        ['neo-tree'] = { event = 'BufWipeout' },
+        undotree = {
+          text = 'undotree',
+          align = 'left',
         },
-      })
-    end,
+      },
+
+    },
     keys = {
       { "<A-w>",   "<cmd>BufferClose<cr>",        desc = "close tab" },
       { "<A-,>",   "<cmd>BufferPrevious<cr>",     desc = "view previous tab" },
@@ -37,6 +37,6 @@ return {
       { "<A-9>",   "<cmd>BufferGoto 9<cr>",       desc = "view ninth tab" },
       { "<A-10>",  "<cmd>BufferLast<cr>",         desc = "view last tab" },
     },
-    lazy = false,
+    event = "BufEnter",
   },
 }
