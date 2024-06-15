@@ -161,6 +161,11 @@ return {
         }
       }
 
+      nvim_lsp['mdx_analyzer'].setup {
+        capabilities = capabilities,
+        on_attach = on_attach
+      }
+
       -- requires: npm install -g svelte-language-server
       -- in addition: you'll need to configure tsserver + typescript-svelte-plugin.
       -- see: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#svelte
