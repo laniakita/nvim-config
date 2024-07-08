@@ -37,6 +37,6 @@ return {
       { "<A-9>",   "<cmd>BufferGoto 9<cr>",       desc = "view ninth tab" },
       { "<A-10>",  "<cmd>BufferLast<cr>",         desc = "view last tab" },
     },
-    event = "BufEnter",
+    lazy = false,
   },
 }
