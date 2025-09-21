@@ -1,3 +1,4 @@
 return {
-  "lambdalisue/vim-suda",
+  'lambdalisue/vim-suda',
+  'neovim/nvim-lspconfig'
 }
