@@ -3,7 +3,15 @@ return {
     'stevearc/conform.nvim',
     config = function()
       require('conform').setup {
-        formatters_by_ft = { 'stylua' },
+        formatters_by_ft = {
+          lua = { 'stylua' },
+          go = { "goimports", "gofmt" },
+          nix = { 'nixfmt', lsp_format = "fallback" },
+          rust = { "rustfmt", lsp_format = "fallback" },
+          default_format_opts = {
+            lsp_format = "fallback",
+          },
+        },
       }
       vim.api.nvim_create_user_command("Format", function(args)
         local range = nil
