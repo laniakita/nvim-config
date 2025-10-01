@@ -8,6 +8,10 @@ return {
           go = { "goimports", "gofmt" },
           nix = { 'nixfmt', lsp_format = "fallback" },
           rust = { "rustfmt", lsp_format = "fallback" },
+          javascript = {"prettier", lsp_format = "fallback"},
+          typescript = {"prettier", lsp_format = "fallback"},
+          javascriptreact = {"prettier", lsp_format = "fallback"},
+          typescriptreact = {"prettier", lsp_format = "fallback"},
           default_format_opts = {
             lsp_format = "fallback",
           },
