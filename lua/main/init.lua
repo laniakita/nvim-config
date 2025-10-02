@@ -52,7 +52,7 @@ vim.lsp.config("rust_analyzer", {
 })
 
 vim.lsp.enable("cmake")
-vim.lsp.enable("cssls")
+-- vim.lsp.enable("cssls") use tailwindcss instead --
 vim.lsp.enable("eslint")
 vim.lsp.enable("gopls")
 vim.lsp.enable("html")
