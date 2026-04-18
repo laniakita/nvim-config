@@ -18,6 +18,7 @@ vim.opt.updatetime = 50
 vim.opt.colorcolumn = "80"
 vim.opt.isfname.append = ("@-@")
 vim.opt.showbreak = string.rep(" ", 2)
+vim.opt.clipboard = "unnamedplus"
 
 -- vim diagnostic --
 

@@ -12,6 +12,7 @@ return {
           typescript = {"prettier", lsp_format = "fallback"},
           javascriptreact = {"prettier", lsp_format = "fallback"},
           typescriptreact = {"prettier", lsp_format = "fallback"},
+          python = {"ruff_format", lsp_fallback = "fallback"},
           default_format_opts = {
             lsp_format = "fallback",
           },

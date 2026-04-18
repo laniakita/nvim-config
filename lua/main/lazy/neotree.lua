@@ -9,8 +9,8 @@ return {
       "3rd/image.nvim",              -- Optional image support in preview window: See `# Preview Mode` for more information
     },
     keys = {
-      { "<leader>pv", "<cmd>Neotree position=current<cr>", desc = "Open NeoTree" },
-      {'<leader>gv', '<cmd>Neotree float git_status<cr>'}
+      { "<leader>pv", "<cmd>Neotree<cr>", desc = "Open NeoTree" },
+      { '<leader>gv', '<cmd>Neotree float git_status<cr>' }
     },
     config = function()
       -- If you want icons for diagnostic errors, you'll need to define them somewhere:
@@ -37,7 +37,7 @@ return {
           else
             return a.type > b.type
           end
-        end,]]--  -- this sorts files and descendentaly and directories descendentaly
+        end,]] --  -- this sorts files and descendentaly and directories descendentaly
         default_component_configs = {
           container = {
             enable_character_fade = true
@@ -115,7 +115,7 @@ return {
         -- see `:h neo-tree-custom-commands-global`
         commands = {},
         window = {
-          position = "left",
+          position = "float",
           width = 40,
           mapping_options = {
             noremap = true,
@@ -206,7 +206,7 @@ return {
             leave_dirs_open = false,              -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
           },
           group_empty_dirs = false,               -- when true, empty folders will be grouped together
-          hijack_netrw_behavior = "open_default", -- netrw disabled, opening a directory opens neo-tree
+          hijack_netrw_behavior = "open_current", -- netrw disabled, opening a directory opens neo-tree
           -- in whatever position is specified in window.position
           -- "open_current",  -- netrw disabled, opening a directory opens within the
           -- window like netrw would, regardless of window.position
@@ -294,5 +294,34 @@ return {
       })
       vim.cmd([[nnoremap \ :Neotree reveal<cr>]])
     end,
-  }
+  },
+  {
+    "antosha417/nvim-lsp-file-operations",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-neo-tree/neo-tree.nvim", -- makes sure that this loads after Neo-tree.
+    },
+    config = function()
+      require("lsp-file-operations").setup()
+    end,
+  },
+  {
+    "s1n7ax/nvim-window-picker",
+    version = "2.*",
+    config = function()
+      require("window-picker").setup({
+        filter_rules = {
+          include_current_win = false,
+          autoselect_one = true,
+          -- filter using buffer options
+          bo = {
+            -- if the file type is one of following, the window will be ignored
+            filetype = { "neo-tree", "neo-tree-popup", "notify" },
+            -- if the buffer type is one of following, the window will be ignored
+            buftype = { "terminal", "quickfix" },
+          },
+        },
+      })
+    end,
+  },
 }
