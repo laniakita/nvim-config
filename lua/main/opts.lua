@@ -19,6 +19,17 @@ vim.opt.colorcolumn = "80"
 vim.opt.isfname.append = ("@-@")
 vim.opt.showbreak = string.rep(" ", 2)
 vim.opt.clipboard = "unnamedplus"
+vim.opt.exrc = true
+vim.opt.secure = true
+
+-- exrc --
+vim.api.nvim_create_autocmd("BufWritePost", {
+  pattern = ".nvim.lua",
+  callback = function(args)
+    vim.secure.trust({ action = "allow", path = args.match })
+  end,
+})
+
 
 -- vim diagnostic --
 
